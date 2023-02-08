@@ -1,1 +1,5 @@
-lamun (true) {cetakEuy("10 sama dengan 10");}
+nomerBadag a = 10;
+
+lamun (true) {
+    cetakEuy("10 sama dengan " + a);
+}

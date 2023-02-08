@@ -1,1 +1,1 @@
-public class SundaLang { public static void main() { if (true) {System.out.println("10 sama dengan 10");} } }
+public class SundaLang { public static void main() { long a = 10;if (true) { System.out.println("10 sama dengan " + a);} } }

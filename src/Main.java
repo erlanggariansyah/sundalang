@@ -34,30 +34,30 @@ public class Main {
     }
 
     public static void read(String location) throws Exception {
-        String code = null;
+        StringBuilder code = new StringBuilder();
         File file = new File(location);
         Scanner scanner = new Scanner(file);
+
         while (scanner.hasNext())
-            code = scanner.nextLine();
+            code.append(scanner.nextLine());
 
         scanner.close();
 
-        if (code == null)
-            throw new Exception("Pembaca file SundaLang tidak menemukan file yang anda maksud.");
-
-        dictionary(code);
+        dictionary(code.toString());
     }
 
     public static void dictionary(String code) throws Exception {
         Map<String, String> dictionary = new LinkedHashMap<>();
-        dictionary.put("int", "nomer");
-        dictionary.put("long", "nomerBadag");
+        dictionary.put("nomer", "int");
+        dictionary.put("nomerBadag", "long");
         dictionary.put("lamun", "if");
         dictionary.put("cetakEuy", "System.out.println");
 
         for (Map.Entry<String, String> entry : dictionary.entrySet()) {
-            code = code.replace(entry.getKey(), entry.getValue());
+            code = code.replaceAll("(?i)\\b" + entry.getKey() + "\\b", entry.getValue());
         }
+
+        code = code.trim().replaceAll(" +", " ");
 
         run(code);
     }
