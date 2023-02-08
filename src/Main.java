@@ -33,6 +33,9 @@ public class Main {
     }
 
     public static void read(String location) throws Exception {
+        if (!location.endsWith(".sunda"))
+            throw new Exception("SundaFile na teu bener.");
+
         StringBuilder code = new StringBuilder();
         File file = new File(location);
         Scanner scanner = new Scanner(file);
@@ -89,7 +92,9 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            read("./test.sunda");
-        } catch (Exception ignored) {}
+            read("./test.sundas");
+        } catch (Exception exception) {
+            System.out.println("Kasalahan: " + exception.getMessage());
+        }
     }
 }
