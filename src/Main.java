@@ -75,6 +75,9 @@ public class Main {
         dictionary.put("ditangtayungan", "protected");
         dictionary.put("umum", "public");
 
+        // loops
+        dictionary.put("pikeun", "for");
+
         // others
         dictionary.put("coba", "try");
         dictionary.put("nangkep", "catch");
@@ -92,7 +95,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            read("./test.sundas");
+            read("./test.sunda");
         } catch (Exception exception) {
             System.out.println("Kasalahan: " + exception.getMessage());
         }

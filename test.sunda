@@ -10,3 +10,7 @@ lamun (a == b) {
 } lamunhenteu {
     cetakEuy("henteu");
 }
+
+pikeun (Nomer i = 1; i <= 5; i++) {
+    cetakEuy("\n" + i);
+}
