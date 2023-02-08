@@ -1,5 +1,12 @@
-nomerBadag a = 10;
+NomerPangleutikna a = 10;
+NomerPangleutikna b = 10;
+Kecap tesKecap = "Keburu bengkak";
 
-lamun (true) {
-    cetakEuy("10 sama dengan " + a);
+lamun (a == b) {
+    cetakEuy(b + " sama dengan " + a);
+    cetakEuy(tesKecap);
+} lamundeui (a == b + 1) {
+    cetakEuy(b);
+} lamunhenteu {
+    cetakEuy("henteu");
 }

@@ -1,1 +1,8 @@
-public class SundaLang { public static void main() { long a = 10;if (true) { System.out.println("10 sama dengan " + a);} } }
+public class SundaLang { public static void main() { byte a = 10;
+byte b = 10;
+String tesKecap = "Keburu bengkak";
+if (a == b) { System.out.println(b + " sama dengan " + a);
+ System.out.println(tesKecap);
+} else if(a == b + 1) { System.out.println(b);
+} else { System.out.println("henteu");
+} } }

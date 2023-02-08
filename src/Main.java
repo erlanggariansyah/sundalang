@@ -20,9 +20,8 @@ public class Main {
         printWriter.close();
 
         Iterable<? extends JavaFileObject> fileObjects = fileManager.getJavaFileObjects(file);
-        if(!compiler.getTask(null, fileManager,null,null,null, fileObjects).call()) {
+        if(!compiler.getTask(null, fileManager,null,null,null, fileObjects).call())
             throw new Exception("Kompilasi gagal. Pastikan versi Java anda memenuhi standar minimum penggunaan SundaLang.");
-        }
 
         URL[] urls = new URL[]{
                 new File("").toURI().toURL()
@@ -48,16 +47,42 @@ public class Main {
 
     public static void dictionary(String code) throws Exception {
         Map<String, String> dictionary = new LinkedHashMap<>();
-        dictionary.put("nomer", "int");
-        dictionary.put("nomerBadag", "long");
+
+        // data types
+        dictionary.put("NomerPangleutikna", "byte");
+        dictionary.put("NomerLeutik", "short");
+        dictionary.put("Nomer", "int");
+        dictionary.put("NomerBadag", "long");
+        dictionary.put("NomerFraksi", "float");
+        dictionary.put("NomerFraksiBadag", "double");
+        dictionary.put("Surat", "char");
+        dictionary.put("Kecap", "String");
+
+        // logical operator
         dictionary.put("lamun", "if");
+        dictionary.put("iraha", "while");
+        dictionary.put("lamunhenteu", "else");
+        dictionary.put("lamundeui", "else if");
+
+        // function
         dictionary.put("cetakEuy", "System.out.println");
+
+        // access modifiers
+        dictionary.put("swasta", "private");
+        dictionary.put("ditangtayungan", "protected");
+        dictionary.put("umum", "public");
+
+        // others
+        dictionary.put("coba", "try");
+        dictionary.put("nangkep", "catch");
 
         for (Map.Entry<String, String> entry : dictionary.entrySet()) {
             code = code.replaceAll("(?i)\\b" + entry.getKey() + "\\b", entry.getValue());
         }
 
         code = code.trim().replaceAll(" +", " ");
+        code = code.replaceAll("\\R", " ");
+        code = code.replace(";", ";\n");
 
         run(code);
     }
