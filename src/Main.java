@@ -28,7 +28,7 @@ public class Main {
         };
 
         URLClassLoader urlClassLoader = new URLClassLoader(urls);
-        Object sundaLang = urlClassLoader.loadClass("SundaLang").newInstance();
+        Object sundaLang = urlClassLoader.loadClass("SundaLang").getDeclaredConstructor().newInstance();
         sundaLang.getClass().getMethod("main").invoke(sundaLang);
     }
 
