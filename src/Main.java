@@ -10,31 +10,33 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
+    private static final ExceptionHandler exceptionHandler = new ExceptionHandler();
+
     public static void run(String code) throws Exception {
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
         StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null);
-        File file = new File("SundaLang.java");
+        File file = new File("SundaLangOutput.java");
 
         PrintWriter printWriter = new PrintWriter(file);
-        printWriter.println("public class SundaLang { public static void main() { " + code + " } }");
+        printWriter.println("public class SundaLangOutput { public static void main() { " + code + " } }");
         printWriter.close();
 
         Iterable<? extends JavaFileObject> fileObjects = fileManager.getJavaFileObjects(file);
         if(!compiler.getTask(null, fileManager,null,null,null, fileObjects).call())
-            throw new Exception("Kompilasi gagal. Pastikan versi Java anda memenuhi standar minimum penggunaan SundaLang.");
+            throw new Exception("Aya kasalahan nalika kompilasi, urang teu ngarti mun ieu mah. Kodena geus di cek deui mang?");
 
         URL[] urls = new URL[]{
                 new File("").toURI().toURL()
         };
 
         URLClassLoader urlClassLoader = new URLClassLoader(urls);
-        Object sundaLang = urlClassLoader.loadClass("SundaLang").getDeclaredConstructor().newInstance();
+        Object sundaLang = urlClassLoader.loadClass("SundaLangOutput").getDeclaredConstructor().newInstance();
         sundaLang.getClass().getMethod("main").invoke(sundaLang);
     }
 
     public static void read(String location) throws Exception {
-        if (!location.endsWith(".sunda"))
-            throw new Exception("SundaFile na teu bener.");
+        if (!location.endsWith(".westjava"))
+            throw new Exception("SundaFile na teu valid, nu bener atuh kang.");
 
         StringBuilder code = new StringBuilder();
         File file = new File(location);
@@ -71,16 +73,20 @@ public class Main {
         dictionary.put("cetakEuy", "System.out.println");
 
         // access modifiers
-        dictionary.put("swasta", "private");
-        dictionary.put("ditangtayungan", "protected");
-        dictionary.put("umum", "public");
+        dictionary.put("jeungsorangan", "private");
+        dictionary.put("jeungurang", "protected");
+        dictionary.put("jeungkabehan", "public");
 
         // loops
         dictionary.put("pikeun", "for");
 
         // others
-        dictionary.put("coba", "try");
-        dictionary.put("nangkep", "catch");
+        dictionary.put("nyoba", "try");
+        dictionary.put("tangkep", "catch");
+        dictionary.put("tungtungna", "finally");
+        dictionary.put("angger", "final");
+        dictionary.put("baledog", "throw");
+        dictionary.put("baledogkeun", "throws");
 
         for (Map.Entry<String, String> entry : dictionary.entrySet()) {
             code = code.replaceAll("(?i)\\b" + entry.getKey() + "\\b", entry.getValue());
@@ -93,11 +99,12 @@ public class Main {
         run(code);
     }
 
-    public static void main(String[] args) {
-        try {
-            read("./test.sunda");
-        } catch (Exception exception) {
-            System.out.println("Kasalahan: " + exception.getMessage());
-        }
+    public static void main(String[] args) throws Exception {
+        Thread.setDefaultUncaughtExceptionHandler(exceptionHandler);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Lebetkeun alamat file SundaLang-na (*.westjava):");
+        String path = scanner.nextLine();
+
+        read(path);
     }
 }

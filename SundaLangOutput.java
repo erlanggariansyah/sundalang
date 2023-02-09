@@ -1,4 +1,4 @@
-public class SundaLang { public static void main() { byte a = 10;
+public class SundaLangOutput { public static void main() { // byte a = 10;
 byte b = 10;
 String tesKecap = "Halo!";
 if (a == b) { System.out.println(b + " sama dengan " + a);
