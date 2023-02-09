@@ -1,5 +1,6 @@
-public class SundaLangOutput { public static void main() { // byte a = 10;
+public class SundaLangOutput { public static void main() { byte a = 10;
 byte b = 10;
+long c = 1000;
 String tesKecap = "Halo!";
 if (a == b) { System.out.println(b + " sama dengan " + a);
  System.out.println(tesKecap);
@@ -8,4 +9,5 @@ if (a == b) { System.out.println(b + " sama dengan " + a);
 }for (int i = 1;
  i <= 5;
  i++) { System.out.println(i);
-} } }
+}System.out.println(c);
+ } }

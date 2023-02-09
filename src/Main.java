@@ -22,7 +22,7 @@ public class Main {
         printWriter.close();
 
         Iterable<? extends JavaFileObject> fileObjects = fileManager.getJavaFileObjects(file);
-        if(!compiler.getTask(null, fileManager,null,null,null, fileObjects).call())
+        if(!compiler.getTask(null, fileManager, null, null, null, fileObjects).call())
             throw new Exception("Aya kasalahan nalika kompilasi, urang teu ngarti mun ieu mah. Kodena geus di cek deui mang?");
 
         URL[] urls = new URL[]{
@@ -42,8 +42,9 @@ public class Main {
         File file = new File(location);
         Scanner scanner = new Scanner(file);
 
-        while (scanner.hasNext())
+        while (scanner.hasNext()) {
             code.append(scanner.nextLine());
+        }
 
         scanner.close();
 
