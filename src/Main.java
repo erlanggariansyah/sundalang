@@ -18,7 +18,7 @@ public class Main {
         File file = new File("SundaLangOutput.java");
 
         PrintWriter printWriter = new PrintWriter(file);
-        printWriter.println("public class SundaLangOutput { public static void main() { " + code + " } }");
+        printWriter.println("public class SundaLangOutput { public static void main(String[] args) { " + code + " } }");
         printWriter.close();
 
         Iterable<? extends JavaFileObject> fileObjects = fileManager.getJavaFileObjects(file);
