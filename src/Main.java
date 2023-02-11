@@ -65,7 +65,6 @@ public class Main {
 
         // logical operator
         dictionary.put("lamun", "if");
-        dictionary.put("iraha", "while");
         dictionary.put("lamunhenteu", "else");
         dictionary.put("lamundeui", "else if");
 
@@ -78,6 +77,7 @@ public class Main {
         dictionary.put("jeungkabehan", "public");
 
         // loops
+        dictionary.put("iraha", "while");
         dictionary.put("pikeun", "for");
 
         // others
