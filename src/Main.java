@@ -42,9 +42,8 @@ public class Main {
         File file = new File(location);
         Scanner scanner = new Scanner(file);
 
-        while (scanner.hasNext()) {
+        while (scanner.hasNext())
             code.append(scanner.nextLine());
-        }
 
         scanner.close();
 
